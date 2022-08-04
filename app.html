@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bengaluru House Price Prediction</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <script src="app.js"></script>
+	<style type="text/css">
+
+		#entire{
+			width: 600px;
+			margin-left: 420px;
+			padding: 5px;
+			font-family: cursive;
+		}
+		html{ 
+			background-image: url("https://images.unsplash.com/photo-1514477917009-389c76a86b68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=767&q=80"); 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			align-content: center;
+			background-repeat: no-repeat;
+	  	} 
+		#data{
+			margin-left: 120px;
+		}
+
+		input[type="number"] {
+			border: none;
+			background: transparent;
+			margin: 0;
+			padding: 7px 8px;
+			border: none;
+			font-size: 14px;
+			color: inherit;
+			outline: 0;
+			border: 1px solid currentColor;
+            border-radius: 18px;
+			margin-top: -10px;
+        }
+		#f1{
+			margin-top: 18px;
+
+		}
+		.sqft{
+			margin-top: -5px;
+		}
+		#uiLocations{
+			width: 190px;
+			border-radius: 18px;
+			height: 30px;
+			padding: 2px;
+			background: transparent;
+			border: 1px solid black;
+		}
+		button[type="button"] {
+			text-indent: -999px;
+			overflow: hidden;
+			width: 70px;
+			padding: 0;
+			border: none;
+			background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+			cursor: pointer;
+			opacity: 0.7;
+			margin-left: -10px;
+			size: 20px;
+        }
+		.switch-field {
+			display: flex;
+			flex-direction: row;
+			margin-bottom: 36px;
+			overflow: hidden;
+		}
+
+		.switch-field input {
+			position: absolute !important;
+			clip: rect(0, 0, 0, 0);
+			height: 1px;
+			width: 1px;
+			border: 0;
+			overflow: hidden;
+		}
+		.switch-field label:hover {
+			cursor: pointer;
+		}
+		.switch-field label {
+			background: transparent;
+			color: rgb(0, 0, 0);
+			font-size: 14px;
+			line-height: 1;
+			text-align: center;
+			padding: 8px 16px;
+			margin-right: -1px;
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+			transition: all 0.1s ease-in-out;
+		}
+		
+		.switch-field input:checked + label {
+			border: 2px solid whitesmoke;
+			border-radius: 5px;
+			box-shadow: none;
+		}
+
+		.switch-field label:first-of-type {
+			border-radius: 4px 0 0 4px;
+		}
+
+		.switch-field label:last-of-type {
+			border-radius: 0 4px 4px 0;
+		}
+		.bath{
+			margin-top: -18px;
+		}
+		.loc{
+			margin-top: -20px;
+		}
+		#uiLocations{
+			margin-top: -5px;
+			padding: 2px;
+			height: 35px;
+			padding: 7px 8px;
+		}
+		.result{
+			width: 100%;
+			display: inline-flex;
+		}
+	</style>
+
+</head>
+<body>
+
+<div id = "entire">
+	<div class="img"></div>
+	<h1 class="title">Bengaluru Home Price Prediction</h1>
+	<div id = "data">
+		<form class="form">
+			<h3 class="sqft">Area in Sq. ft</h3><input class="area" placeholder="Select sqft area"  type="number" id="uiSqft" class="floatLabel" name="Squareft">
+			<div id = "form1">
+				<h3 id = "f1" class="bhk">BHK</h3> 
+				<div class="switch-field">
+					<input type="radio" id="radio-bhk-1" name="uiBHK" value="1"/>
+					<label for="radio-bhk-1">1</label>
+					<input type="radio" id="radio-bhk-2" name="uiBHK" value="2"/>
+					<label for="radio-bhk-2">2</label>
+					<input type="radio" id="radio-bhk-3" name="uiBHK" value="3"/>
+					<label for="radio-bhk-3">3</label>
+					<input type="radio" id="radio-bhk-4" name="uiBHK" value="4"/>
+					<label for="radio-bhk-4">4</label>
+					<input type="radio" id="radio-bhk-5" name="uiBHK" value="5"/>
+					<label for="radio-bhk-5">5</label>
+				</div>
+			</div>
+			
+		</form>
+		<form class="form">
+			<h3 class="bath">Bathroom</h3>
+			<div class="switch-field">
+				<input type="radio" id="radio-bath-1" name="uiBathrooms" value="1" />
+				<label for="radio-bath-1">1</label>
+				<input type="radio" id="radio-bath-2" name="uiBathrooms" value="2"/>
+				<label for="radio-bath-2">2</label>
+				<input type="radio" id="radio-bath-3" name="uiBathrooms" value="3"/>
+				<label for="radio-bath-3">3</label>
+				<input type="radio" id="radio-bath-4" name="uiBathrooms" value="4"/>
+				<label for="radio-bath-4">4</label>
+				<input type="radio" id="radio-bath-5" name="uiBathrooms" value="5"/>
+				<label for="radio-bath-5">5</label>
+			</div>
+				
+			<div>
+			<form class="search"  placeholder="Select Location">
+				<select class="location" name="" id="uiLocations" placeholder="Select Location">
+						
+						<option value="" disabled="disabled" >Select Location</option>
+						<option>billekahalli</option>
+						<option>whitefield</option>
+						
+				</select>
+				<button class="submit" onclick="onClickedEstimatePrice()" type="button">ESTIMATE</button>	
+				<div id="uiEstimatedPrice" class="result">	<h2></h2> </div>
+			</form>
+		  
+		</div>
+			
+	</div>
+</div>
+</body>
+</html>
